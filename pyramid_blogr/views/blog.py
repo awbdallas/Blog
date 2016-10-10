@@ -1,5 +1,5 @@
 from pyramid.view import view_config
-from pyramid.httpexceptions import HTTPNotFound, HTTPFound
+from pyramid.httpexceptions import HTTPNotFound, HTTPFound, HTTPUnauthorized
 
 from ..models.blog_record import BlogRecord
 from ..services.blog_record import BlogRecordService
@@ -24,6 +24,7 @@ def blog_create(request):
     form = BlogCreateForm(request.POST)
     if request.method == 'POST' and form.validate():
         form.populate_obj(entry)
+        entry.created_by = request.authenticated_userid
         request.dbsession.add(entry)
         return HTTPFound(location=request.route_url('home'))
     return {'form': form, 'action': request.matchdict.get('action')}
@@ -42,5 +43,19 @@ def blog_update(request):
         form.populate_obj(entry)
         return HTTPFound(
             location=request.route_url('blog', id=entry.id,slug=entry.slug))
-        return {'form': form, 'action': request.matchdict.get('action')}
-    
+    return {'form': form, 'action': request.matchdict.get('action')}
+   
+
+@view_config(route_name='blog_action', match_param='action=delete',
+        permission='delete')
+def blog_delete(request):
+    blog_id = int(request.params.get('id', -1))
+    entry = BlogRecordService.by_id(blog_id, request)
+    if not entry:
+        return HTTPNotFound()
+    if entry.created_by == request.authenticated_userid:
+        request.dbsession.delete(entry)
+        return HTTPFound(location=request.route_url('home'))
+    else:
+        return HTTPUnauthorized()
+

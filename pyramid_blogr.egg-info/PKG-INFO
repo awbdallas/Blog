@@ -6,8 +6,16 @@ Home-page: UNKNOWN
 Author: UNKNOWN
 Author-email: UNKNOWN
 License: UNKNOWN
-Description: pyramid_blogr README
+Description: Blog README
         ==================
+        About
+        --------------
+        
+        The first commit is all from the pyramid_blogr tutorial. Anything past that is
+        things I've added. 
+        
+        Link to said tutorial: http://docs.pylonsproject.org/projects/pyramid-blogr/en/latest/
+        
         
         Getting Started
         ---------------

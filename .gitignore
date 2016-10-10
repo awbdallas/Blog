@@ -1,0 +1,7 @@
+pyramid_blogr.sqlite
+pyramid_blogr/__pycache__/
+pyramid_blogr/models/__pycache__/
+pyramid_blogr/scripts/__pycache__/
+pyramid_blogr/services/__pycache__/
+pyramid_blogr/views/__pycache__/
+

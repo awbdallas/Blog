@@ -16,6 +16,7 @@ class BlogRecord(Base):
     id = Column(Integer, primary_key=True)
     title = Column(Unicode(255), unique=True, nullable=False)
     body = Column(UnicodeText, default=u'')
+    created_by = Column(Unicode(255), nullable=False)
     created = Column(DateTime, default=datetime.datetime.utcnow)
     edited = Column(DateTime, default=datetime.datetime.utcnow)
 

@@ -24,24 +24,68 @@
   </head>
 
   <body>
-    <div class="blog-template">
+
+    <div class="blog-masthead">
       <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-          </div>
-          <div class="col-md-10">
-            {% block content %}
-                <p>No content</p>
-            {% endblock content %}
-          </div>
-        </div>
-        <div class="row">
-          <div class="links">
-          </div>
-        </div>
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="#">Home</a>
+        </nav>
       </div>
     </div>
 
+    <div class="container">
+
+      <div class="blog-header">
+        <h1 class="blog-title">I'm really bad at this. A Blog.</h1>
+        <p class="lead blog-description">One day I'll get good</p>
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-8 blog-main">
+			{% block content %}
+				<p> No content</p>
+			{% endblock content %}
+          <nav>
+            <ul class="pager">
+              <li><a href="#">Previous</a></li>
+              <li><a href="#">Next</a></li>
+            </ul>
+          </nav>
+
+        </div><!-- /.blog-main -->
+
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About</h4>
+            <p>My name is Austin Briggs. I'm really bad at this. Follow me try to get better.</p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">April 2013</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Elsewhere</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="#">Twitter</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

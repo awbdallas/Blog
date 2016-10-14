@@ -1,6 +1,8 @@
-{% extends "pyramid_blogr:templates/layout.jinja2" %}
+{% extends "pyramid_blogr:templates/layout_minimal.jinja2" %}
 
 {% block content %}
+
+
 	<h1>Register</h1>
 
 	<form action="{{request.route_url('register')}}" method="post" class="form">

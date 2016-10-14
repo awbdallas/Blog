@@ -6,17 +6,26 @@
 	<hr />
 	<p>{{ entry.body }}</p>
 	<hr/>
-	<p>Created <strong title="{{ entry.created }}">
+	<p class="blog-note">Created <strong title="{{ entry.created }}">
 		{{ entry.created_in_words }}</strong> ago</p>
 
 	</div>
 
-	<p><a href="{{ request.route_url('home') }}">Go Back</a> ::
-		<a href="{{ request.route_url('blog_action', action='edit',
-		_query={'id':entry.id}) }}">Edit Entry</a> ::
-               <a onclick="return confirm('Are you sure you want to delete?')"  
-                 href="{{ request.route_url('blog_action', action='delete',
-                _query={'id':entry.id}) }}">Delete Entry</a>
-	</p>
+	{% if request.authenticated_userid == entry.created_by %}
+	<div class="dropdown">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Options<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li>
+				<a href="{{ request.route_url('blog_action', action='edit',
+				_query={'id':entry.id}) }}">Edit Entry</a>
+			</li>
+			<li>
+				<a onclick="return confirm('Are you sure you want to delete?')"
+				href="{{ request.route_url('blog_action', action='delete',
+				_query={'id':entry.id}) }}">Delete Entry</a>
+			</li>
+		</ul>
+	</div>
+	{% endif %}
 
 {% endblock %}

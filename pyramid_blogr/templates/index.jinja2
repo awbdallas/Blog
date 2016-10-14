@@ -2,46 +2,20 @@
 
 {% block content %}
 
-	{% if request.authenticated_userid %}
-		Welcome <strong>{{request.authenticated_userid}}</strong> ::
-		<a href="{{request.route_url('auth',action='out')}}">Sign Out</a>
-	{% else %}
-		<form action="{{request.route_url('auth',action='in')}}" method="post" class="form-inline">
-			<div class="form-group">
-				<input type="text" name="username" class="form-control" placeholder="Username">
-			</div>
-			<div class="form-group">
-				<input type="password" name="password" class="form-control" placeholder="Password">
-			</div>
-			<div class="form-group">
-				<input type="submit" value="Sign in" class="btn btn-default">
-			</div>
-		</form>
-		<a href="{{request.route_url('register')}}">Register here</a>
-	{% endif %}
-
-
     {% if paginator.items %}
 
         <h2>Blog entries</h2>
-
         <ul>
-            {% for entry in paginator.items %}
-				<div class="blog-post">
-					<h2 class="blog-post-title">{{ entry.title }}</h2>
-					<p class="blog-post-meta">{{ entry.created.strftime('%m-%d-%Y') }}</p>
-					{{ entry.body }}
-				</div>
-            {% endfor %}
+        {% for entry in paginator.items %}
+  				<div class="blog-post">
+  					<h2 class="blog-post-title">{{ entry.title }}</h2>
+  					<p class="blog-post-meta">{{ entry.created.strftime('%m-%d-%Y') }}</p>
+  					{{ entry.body }}
+  				</div>
+        {% endfor %}
         </ul>
-
         {{ paginator.pager() |safe }}
-
     {% else %}
-
         <p>No blog entries found.</p>
-
     {% endif %}
-
-
 {% endblock %}

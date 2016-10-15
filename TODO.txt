@@ -1,0 +1,9 @@
+TODO
+-----------------
+
+This is for general overall TODO's
+
+Setup Blog entries as links
+Allow commenting (only I should be able to make actual posts as admin)
+Limit Blog entries to 5 per page and add functionality to previous/next buttons
+Get archives to work to allow queries by time

@@ -20,7 +20,6 @@ class User(Base):
 
     
     def verify_password(self, password):
-        # cleartext?
         if password == self.password:
             self.set_password(password)
         return blogger_pwd_context.verify(password, self.password)

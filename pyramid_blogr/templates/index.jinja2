@@ -7,14 +7,14 @@
         <h2>Blog entries</h2>
         <ul>
         {% for entry in paginator.items %}
-  				<div class="blog-post">
-  					<h2 class="blog-post-title">{{ entry.title }}</h2>
-  					<p class="blog-post-meta">{{ entry.created.strftime('%m-%d-%Y') }}</p>
-  					{{ entry.body }}
-  				</div>
+          <div class="blog-post">
+                  <a href="/blog/{{ entry.id }}/{{ entry.title }}"><h2 class="blog-post-title">{{ entry.title }}</h2></a>
+                  <p class="blog-post-meta">{{ entry.created.strftime('%m-%d-%Y') }}</p>
+                  {{ entry.body }}
+          </div>
         {% endfor %}
         </ul>
-        {{ paginator.pager() |safe }}
+        <h4> {{ paginator.pager() |safe }} <h4>
     {% else %}
         <p>No blog entries found.</p>
     {% endif %}

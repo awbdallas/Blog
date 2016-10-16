@@ -1,6 +1,7 @@
 import os
 import sys
 import transaction
+import app_settings
 
 from pyramid.paster import (
     get_appsettings,
@@ -41,5 +42,5 @@ def main(argv=sys.argv):
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
 
-        admin = User(name=u'admin', password=u'admin', email=u'Austin.W.Briggs@gmail.com')
+        admin = User(name=admin_name, password=admin_password, email=admin_email)
         dbsession.add(admin)

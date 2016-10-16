@@ -18,4 +18,13 @@ class BlogUpdateForm(BlogCreateForm):
 class RegistrationForm(Form):
     username = StringField('Username', [validators.Length(min=1, max=255)],
         filters=[strip_filter])
-    password = PasswordField('Password', [validators.Length(min=3)])
+    password = PasswordField('Password', [
+            validators.DataRequired(),
+            validators.EqualTo('confirm', message='Passwords must match)')
+    ]) 
+    confirm = PasswordField('Repeat Password')
+    email = StringField('Email', [
+        validators.DataRequired(),
+        validators.Length(min=6, max=35),
+        validators.Email()
+    ])

@@ -16,6 +16,15 @@
 			{{form.username(class_='form-control')}}
 		</div>
 
+		{% for error in form.email.errors %}
+			<div class="error">{{error}}</div>
+		{% endfor %}
+                
+                <div class="form-group">
+			<label for="body">{{form.email.label}}</label>
+			{{form.email(class_='form-control')}}
+		</div>
+
 		{% for error in form.password.errors %}
 			<div class="error">{{error}}</div>
 		{% endfor %}
@@ -24,6 +33,11 @@
 			<label for="body">{{form.password.label}}</label>
 			{{form.password(class_='form-control')}}
 		</div>
+		<div class="form-group">
+			<label for="body">{{form.confirm.label}}</label>
+			{{form.confirm(class_='form-control')}}
+		</div>
+		
 		<div class="form-group">
 			<label></label>
 			<button type="submit" class="btn btn-default">Submit</button>

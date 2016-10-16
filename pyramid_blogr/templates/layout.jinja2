@@ -31,7 +31,9 @@
         <nav class="blog-nav">
 		<ul class="nav navbar-nav">
 			<li><a class="blog-nav-item" href="/">Home</a></li>
+                        {% if request.authenticated_userid == 'admin' %}
 			<li><a class="blog-nav-item" href="{{ request.route_url('blog_action',action='create') }}">Create Post</a></li>
+                        {% endif %}
 		</ul>
 		{% if request.authenticated_userid %}
 		<ul class="nav navbar-nav navbar-right">
@@ -42,25 +44,25 @@
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">
 				<a class="dropdown-toggle blog-nav-item" data-toggle="dropdown">Login<span class="caret"></span></a>
-					<ul id="login-dp" class="dropdown-menu">
-						<li>
-							<div class="row">
-								<div class="col-md-12">
-								<form action="{{request.route_url('auth',action='in')}}" method="post" class="form-inline">
-									<div class="form-group">
-										<input type="text" name="username" class="form-control" placeholder="Username">
-									</div>
-									<div class="form-group">
-										<input type="password" name="password" class="form-control" placeholder="Password">
-									</div>
-									<div class="form-group">
-										<input type="submit" value="Sign in" class="btn btn-default">
-									</div>
-								</form>
-								</div>
-							</div>
-						</li>
-					</ul>
+                                  <ul id="login-dp" class="dropdown-menu">
+                                        <li>
+                                              <div class="row">
+                                                      <div class="col-md-12">
+                                                      <form action="{{request.route_url('auth',action='in')}}" method="post" class="form-inline">
+                                                              <div class="form-group">
+                                                                      <input type="text" name="username" class="form-control" placeholder="Username">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                      <input type="password" name="password" class="form-control" placeholder="Password">
+                                                              </div>
+                                                              <div class="form-group">
+                                                                      <input type="submit" value="Sign in" class="btn btn-default">
+                                                              </div>
+                                                      </form>
+                                                      </div>
+                                              </div>
+                                        </li>
+                                  </ul>
 			</li>
 			<li><a class="blog-nav-item" href="{{request.route_url("register")}}">Register</a></li>
 		</ul>
@@ -113,7 +115,8 @@
     </div><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>Blog template originally built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>. Modified by Austin Briggs.</p>
+
       <p>
         <a href="#">Back to top</a>
       </p>

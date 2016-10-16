@@ -31,7 +31,9 @@
         <nav class="blog-nav">
 		<ul class="nav navbar-nav">
 			<li><a class="blog-nav-item" href="/">Home</a></li>
+                        {% if request.authenticated_userid == 'admin' %}
 			<li><a class="blog-nav-item" href="{{ request.route_url('blog_action',action='create') }}">Create Post</a></li>
+                        {% endif %}
 		</ul>
 		{% if request.authenticated_userid %}
 		<ul class="nav navbar-nav navbar-right">
@@ -82,7 +84,7 @@
     </div><!-- /.container -->
 
     <footer class="blog-footer">
-      <p>Blog template built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>Blog template originally built for <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>. Modified by Austin Briggs.</p>
       <p>
         <a href="#">Back to top</a>
       </p>

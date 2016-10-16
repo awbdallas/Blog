@@ -41,5 +41,5 @@ def main(argv=sys.argv):
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
 
-        admin = User(name=u'admin', password=u'admin')
+        admin = User(name=u'admin', password=u'admin', email=u'Austin.W.Briggs@gmail.com')
         dbsession.add(admin)

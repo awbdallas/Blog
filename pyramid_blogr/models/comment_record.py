@@ -1,4 +1,4 @@
-import datetime # default dates on mdels
+import datetime # default dates on models
 from pyramid_blogr.models.meta import Base  #sqlalchmy
 from sqlalchemy import (
     Column,
@@ -8,22 +8,18 @@ from sqlalchemy import (
     DateTime,
 )
 
-from webhelpers2.text import urlify # generate slugs
 from webhelpers2.date import distance_of_time_in_words # human friendly 
 
-class BlogRecord(Base):
-    __tablename__ = 'blog_entries'
+class CommentRecord(Base):
+    __tablename__ = 'comment_entries'
     id = Column(Integer, primary_key=True)
-    title = Column(Unicode(255), unique=True, nullable=False)
-    body = Column(UnicodeText, default=u'')
+    # Setting blog_id for where the comment is
+    blog_id = Column(Integer, nullable=False)
+    comment = Column(UnicodeText, default=u'')
+    # Must be registered users, no Anon entries
     created_by = Column(Unicode(255), nullable=False)
     created = Column(DateTime, default=datetime.datetime.utcnow)
     edited = Column(DateTime, default=datetime.datetime.utcnow)
-
-
-    @property 
-    def slug(self):
-        return urlify(self.title)
 
     
     @property

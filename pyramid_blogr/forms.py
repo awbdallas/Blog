@@ -28,3 +28,8 @@ class RegistrationForm(Form):
         validators.Length(min=6, max=35),
         validators.Email()
     ])
+
+
+class BlogCommentForm(Form):
+    comment = TextAreaField('Comment', [validators.Length(min=1)],
+            filters=[strip_filter])

@@ -1,13 +1,10 @@
-from pyramid.view import notfound_view_config, forbidden_view_config
+from pyramid.view import notfound_view_config
 
 
-@notfound_view_config(renderer='../templates/404.jinja2')
+@notfound_view_config(renderer='pyramid_blogr:templates/404.jinja2')
 def notfound_view(request):
-    request.response.status = 404
+    request.response = context
     return {}
 
-
-@forbidden_view_config(renderer='../templates/403.jinja2')
-def notfound_view(request):
-    request.response.status = 403
-    return {}
+def includeme(config):
+    config.scan(__name__)

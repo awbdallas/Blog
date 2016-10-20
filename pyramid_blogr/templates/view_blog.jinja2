@@ -27,5 +27,40 @@
 		</ul>
 	</div>
 	{% endif %}
+        
+        {% if request.authenticated_userid %}
+        <form action="{{ request.route_url('comment', action='add_comment', id=entry.id) }}" method="post" class="form">
+            
+          {% for error in form.comment.errors %}
+                <div class="error">{{ error }}</div>
+            {% endfor %}
 
+            <div class="form-group">
+                <label for="comment">{{ form.comment.label }}</label>
+                {{ form.comment(class_='form-control') }}
+            </div>
+
+            <div class="form-group">
+                <label></label>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+        {% endif %}
+
+
+        {% if comments %}
+          {% for comment in comments %}
+          <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object" src="/static/user_image.png">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"> {{ comment.created_by }}</h4>
+              {{ comment.comment }}
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p> No comments </p>
+        {% endif %}
 {% endblock %}

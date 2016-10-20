@@ -6,9 +6,9 @@ This is for general overall TODO's
 
 WORKING ON CURRENTLY
 ---------------------
-Allow commenting (only I should be able to make actual posts as admin)
+Allow commenting (only I should be able to make actual posts as admin, and that's how it's set currently)
 Set up Passwords and stuff as environment variables for security ( app settings failed )
-forbidden view config
+
 
 FUTURE
 ----------------------
@@ -18,4 +18,6 @@ Send email to confirm registration?
 Set up security groups. Looks like a tutorial here: http://michael.merickel.org/projects/pyramid_auth_demo/group_security.html
 Investigate how to do rich text and formatting for the blog
 Add "read more" button to the blogs
-
+Change register page of size of boxes
+User Sections
+Fix the error pages. They're not going to the @notfound_view_config for some reason

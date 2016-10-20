@@ -6,3 +6,8 @@ def includeme(config):
                      factory='pyramid_blogr.security.BlogRecordFactory')
     config.add_route('auth', '/sign/{action}')
     config.add_route('register', '/register')
+    # We can add user portions later
+    config.add_route('comment', '/blog/{id:\d+}/comment/{action}',
+                    factory='pyramid_blogr.security.CommentFactory')
+    config.scan()
+
